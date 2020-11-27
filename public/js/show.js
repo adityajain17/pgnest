@@ -12,6 +12,7 @@ fetch_word.addEventListener('click',function()
             // console.log('Word Cloud Done');
             var cloud=document.getElementById("cloud");
             fetch_word.style.visibility='hidden';
+            cloud.src="/assets/word-"+parsed_data+".png";
             cloud.style.visibility='visible';
         }
         else
