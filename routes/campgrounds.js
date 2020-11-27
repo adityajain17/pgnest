@@ -165,7 +165,8 @@ router.delete("/:id",middleware.checkCampgroundOwnership, function(req, res){
       if(err){
           res.redirect("/campgrounds");
       } else {
-          fs.unlinkSync(process.env['ROOT']+"/public/assets/word-"+req.params.id+".png");
+          if(fs.existsSync(process.env['ROOT']+"/public/assets/word-"+req.params.id+".png"))
+            fs.unlinkSync(process.env['ROOT']+"/public/assets/word-"+req.params.id+".png");
           res.redirect("/campgrounds");
       }
    });
