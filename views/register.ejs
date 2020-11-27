@@ -1,0 +1,45 @@
+<% include partials/header %>
+<link rel="stylesheet" href="stylesheets/register.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Seaweed+Script&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<div class="page">
+    <div class="signup">
+        <div class="details">
+            <div class="welcome"><img style="width:auto;max-height:100px;object-fit: cover;"src="assets/pg-nest.png" alt="Dintn"></div>
+            <div class="start">Create your PG Nest Account</div>
+            <div class="cnt">to continue to PG Nest</div>
+            <div class="credentials">
+                <form action="/register" method="POST" enctype="multipart/form-data"><br>
+                    <input class="inps" type="text" name="fname" placeholder="First name">
+                    <input class="inps" type="text" name="lname" placeholder="Last name">
+                    <br><br>
+                    <!-- <label for="gender">Gender</label> -->
+                    
+                    <select class="drop" name="gender" id="" placeholder="Gender">
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <br>
+                    <input class="inps" type="text" name="email" placeholder="Email id">
+                    <input class="inps1" type="text" name="username" placeholder="Username">
+                    <label for="inps1">You can use letters,numbers &periods</label><br><br>
+                    <div class="mb3 ">
+                        <p class="glyphicon glyphicon-upload"></p>&nbsp;
+                        <label class="form-label" for="images">Profile Picture</label>&nbsp;
+                        <input style="display: inline;" type="file" name="profile" accept="image/*" required><br>
+                    </div>
+                    <input class="inps" type="password" name="password" placeholder="Password">
+                    <input class="inps" type="password" name="cnfpass" placeholder="Confirm Password">
+                    <div class="abtn">
+                        <div class="f1"><a class="anc" href="/login">Sign In Instead</a></div>
+                        <div class="f2"><button class="btn">Sign Up</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="logo" >
+        <div style="background-image: url(https://ssl.gstatic.com/accounts/signup/glif/account.svg)"></div>
+    </div>
+</div>
+<% include partials/footer %>

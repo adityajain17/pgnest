@@ -1,0 +1,59 @@
+<% include ../partials/header %>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+
+<div class="dash">
+    <% campgrounds.forEach(function(campground){ %>
+    <div class="listing">
+        <div class="bitmap">
+            <img class="img-fluid img-thumbnail" src="data:image/<%=campground.images[0].contentType%>;base64,<%=campground.images[0].data.toString('base64')%>" alt="">
+        </div>
+        <div class="details">
+            <div><h3><b><%=campground.name%> </b></h3></div>
+            <div><h4><%=campground.location%> </h4></div>
+            <div class="amenities">
+                <div>
+                    <img src="https://www.oyolife.in/static/media/amenities/Wifi.svg" alt="Wi-Fi">
+                    <h5 style="font-size: smaller;">Wi-Fi</h5>
+                </div>
+                <div>
+                    <img src="https://www.oyolife.in/static/media/amenities/bed_147.svg" alt="Bed">
+                    <h5 style="font-size: smaller;">Bed</h5>
+                </div>
+                <div>
+                    <img src="https://www.oyolife.in/static/media/amenities/cctv_86.svg" alt="Wi-Fi">
+                    <h5 style="font-size: smaller;">CCTV</h5>
+                </div>
+                <div>
+                    <img src="https://www.oyolife.in/static/media/amenities/diningarea_34.svg" alt="Wi-Fi">
+                    <h5 style="font-size: smaller;">Dining Area</h5>
+                </div>
+                <div>
+                    <img src="https://www.oyolife.in/static/media/amenities/fireextinguisher_452.svg" alt="Wi-Fi">
+                    <h5 style="font-size: smaller;">Fire Extinguisher</h5>
+                </div>
+                <div>
+                    <img src="https://www.oyolife.in/static/media/amenities/induction.svg" alt="Wi-Fi">
+                    <h5 style="font-size: smaller;">Induction</h5>
+                </div>
+                <div>
+                    <img src="https://www.oyolife.in/static/media/amenities/microwave_151.svg" alt="Wi-Fi">
+                    <h5>Microwave</h5>
+                </div>
+            </div>
+            <div>
+                <img style="width:40px; height:41px;" src="https://e7.pngegg.com/pngimages/479/698/png-clipart-email-computer-icons-bounce-address-email-miscellaneous-logo.png" alt="">
+                &nbsp;<span><%=campground.author.email%> </span>
+            </div>
+            <div class="other-details">
+                <div style="flex:3;">
+                    <h2 style="color: red; font-weight: 700; font-size: 24px;">₹<%=campground.price%> </h2>
+                    <h5 style="opacity: 0.7; font-size:small;">per room per night</h5>
+                </div>
+                <div style="padding:5px"><a href="/campgrounds/<%=campground._id%>"><button class="btn btn-primary">View <%=campground.name%> </button></a></div>
+                <div style="padding:5px"><a href="/campgrounds/<%=campground._id%>/book"><button class="btn btn-success">Book Now </button></a></div>
+            </div>
+            
+        </div>
+    </div><br>
+    <%});%>
+</div>

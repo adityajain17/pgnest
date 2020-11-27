@@ -1,0 +1,82 @@
+<% include ../partials/header %>
+<link rel="stylesheet" href="/stylesheets/book_cnf.css">
+<script src="https://use.fontawesome.com/1a5e1fd8e9.js"></script>
+<div class="main-box">
+    <div class="details">
+        <div class="customer-details">
+            <div class="customer-head">
+                <div style="padding-left: 20px;"><h3><b>Your Details</b></h3></div>
+                <div><a href="/campgrounds/<%=campground._id%>/book?name=<%=book.cname%>&email=<%=book.email%>&checkin=<%=book.checkin%>&checkout=<%=book.checkout%>"><button class="modify">Modify</button></a></button></div>
+            </div>
+            <div class="show-info">
+                <div class="sbox"><%=book.cname%> </div>
+                <div class="line"></div>
+                <div class="sbox"><%=book.email%> </div>
+            </div>
+        </div><br>
+        <div style="padding-left: 20px;" class="complete-book">
+            <div ><h4><b>Complete your booking</b></h4></div>
+            <div style="text-align: right;"><i class="fa fa-star" style="color:gold" aria-hidden="true"></i>&nbsp;<span style="font-weight: 600;">No payment needed today</span></div><br>
+            <div style="color: rgb(109, 120, 125);">We will confirm your stay without any charge.</div>
+            <div style="color: rgb(109, 120, 125);">Pay directly at the hotel after stay</div><br>
+            <div style="text-align: right;">
+                <form action="/campgrounds/<%=campground._id%>/book/cnf" method="POST">
+                    <input type="text" name="cname" style="visibility: hidden; width: 0; height: 0;" value="<%=book.cname%>">
+                    <input type="email" name="email" style="visibility: hidden; width: 0; height: 0;" value="<%=book.email%>">
+                    <input type="text" name="checkin" style="visibility: hidden; width: 0; height: 0;" value="<%=book.checkin%>">
+                    <input type="text" name="checkout" style="visibility: hidden; width: 0; height: 0;" value="<%=book.checkout%>">
+                    <input type="number" name="bill_amt" style="visibility: hidden; width: 0; height: 0;" value="<%=bill_amt%>">
+                    <input type="text" name="days" style="visibility: hidden; width: 0; height: 0;" value="<%=days%> ">
+                    <button class="btn btn-success">Book Now</button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="hotel-details">
+        <div class="part-1">
+            <div class="details" style="padding-left: 20px;">
+                <div><h3><b><%=campground.name%> </b></h3></div>
+                <div>
+                    <span style="background-color: #52b520;">
+                            <span style="padding: 10px;">
+                                <span style="color: white;text-align: center;font-size: 15px; font-weight: 700;"><%=campground.avg_rating%></span>
+                                <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
+                            </span>
+                    </span>&nbsp;
+                    <h5 style="display: inline;"><b><%=days%> Nights </b></h5>
+                </div>
+            </div>
+            <div class="bitmap"><img style="width: 100%; height:100%;object-fit: contain;" src="data:image/<%=campground.images[0].contentType%>;base64,<%=campground.images[0].data.toString('base64')%>" alt=""></div>
+        </div>
+        <br>
+        <div class="part-2">
+            <div><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
+                <span><b><%=book.checkin%> - </b></span>
+                <span><b><%=book.checkout%></b></span>
+            </div>
+        </div>
+        <br>
+        <div class="part-3">
+            <div class="billing">
+                <div class="b1">
+                    <div>Room price for 1 Night</div>
+                    <div style="font-weight: 600;">₹ <%=campground.price%> </div>
+                </div>
+                <div class="b2">
+                    <div>Number of Days</div>
+                    <div style="font-weight: 600;">X <%=days%> </div>
+                </div>
+                <div class="hr"></div>
+                <div class="b3">
+                    <div>
+                        <div>Payable Amount</div>
+                        <div style="font-size:12px;font-weight: 600; line-height: 1.67;opacity: 0.57;">inclusive of all taxes</div>
+                    </div>
+                    <div style="font-weight: 600;font-size:24px">₹ <%=bill_amt%> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

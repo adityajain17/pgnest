@@ -1,0 +1,24 @@
+body
+{
+    background-image: url(/assets/image-test-6.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+}
+.mainbox{
+    margin: 50px auto;
+    background-color: white;
+    width:60%;
+    padding:20px;
+    border-radius: 10px;
+}
+form{
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+}
+.inps{
+    width:70%;
+}

@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <div class="mainbox">
+        <form action="/campgrounds" method="POST" enctype="multipart/form-data">
+            <h1 style="text-align: center; padding-top: 20px; text-decoration: solid;">New Listing</h1>
+            <div class="mb3 inps">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" name="name" required><br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" name="location" required><br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="price">Price</label>
+                <input class="form-control" type="number" name="price" required>
+                <br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" name="description" rows="5" required></textarea><br>
+            </div>
+            <div class="mb3 inps">
+                <p class="glyphicon glyphicon-upload"></p>&nbsp;
+                <label class="form-label" for="images">Image Upload</label>
+                <input type="file" name="images" accept="image/*" multiple required><br>
+            </div>
+            <div class="mb3 inps">
+                <button type="submit" class="btn btn-success">Add New Listing</button>
+            </div>
+        </form>
+    </div>
+<% include ../partials/footer %>

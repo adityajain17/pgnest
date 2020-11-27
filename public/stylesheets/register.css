@@ -1,0 +1,130 @@
+body
+{
+    /* background-color: rgba(108, 119, 112, 0.7); */
+    background-image: url(/assets/image-test-6.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.page
+{
+    display:flex;
+    margin:50px auto;
+    background-color: white;
+    width:800px;
+    border-radius:10px;
+}
+.details
+{
+    padding:40px;
+}
+.signup
+{
+    flex:6;
+}
+.logo
+{
+    flex:3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo div{
+    width: 70%;
+    height: 30%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.start
+{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 23px;
+}
+.cnt
+{
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom:30px;
+}
+.inps
+{
+    font-family: 'Poppins', sans-serif;
+    padding:10px;
+    width:200px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border:none;
+    border-bottom: 2px solid black;
+    /* border-bottom: 2px solid #1a73e8; */
+}
+.inps1
+{
+    font-family: 'Poppins', sans-serif;
+    padding:10px;
+    width:420px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border:none;
+    border-bottom: 2px solid #696969;
+}
+.drop
+{
+    font-family: 'Poppins', sans-serif;
+    color:black;
+    border: none;
+    border-bottom: 2px solid #696969;
+}
+.lab
+{
+    font-family: 'Poppins', sans-serif;
+    padding:10px;
+}
+.welcome
+{
+    font-weight: 700;
+    font-size: 26px;
+    font-family: 'Seaweed Script', cursive;
+}
+.abtn
+{
+    margin-top:80px;
+    padding-bottom: 5px;
+    display: flex;
+}
+.anc
+{
+    /* color:#d3164d; */
+    color: #4688f1;
+    font-weight: 800;
+}
+.btn
+{
+    /* background-color: #1973e7; */
+    /* background-color: #d3164d; */
+    background-color: #4688f1;
+    color: white;
+    font-weight: 800;
+}
+.btn:hover
+{
+    color: white;
+}
+.f1
+{
+    flex:7;
+    float: left;
+}
+a:hover{
+    color:black;
+}
+.f2
+{
+    flex:4;
+    float: right;
+    margin-right: 20px;
+}

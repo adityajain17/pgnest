@@ -1,0 +1,31 @@
+<% include ./partials/header %> 
+<link rel="stylesheet" href="stylesheets/account.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
+<div class="dash">
+    <fieldset>
+        <legend>
+            <div class="prof-img" style='background-image: url(data:image/<%=profile.contentType%>;base64,<%=profile.data.toString("base64")%>) ;border: 1px solid black;'></div>
+        </legend>
+        <div class="head">Account Details</div>
+        <div class="info">
+            <p>Personal Information:</p>
+            <hr><span class="info_sub">Username: </span><span class="info_cont"><%=currentUser.username%></span><br>
+            <hr><span class="info_sub">First Name: </span><span class="info_cont"><%=currentUser.firstname%></span><br>
+            <hr><span class="info_sub">Last Name: </span><span class="info_cont"><%=currentUser.lastname%></span><br>
+        </div>
+        <div class="post"><p>Posts Done:</p>
+        <%for(var i=0;i<posted.length ;i++ ) { 
+            var url="campgrounds/"+posted[i]._id; %>
+        <div class="pname"><a href=<%=url%>><%=posted[i].name%></a></div>
+        <%}%>
+        </div>
+        <div class=post><p>Bookings Done:</p>
+            <%for(var i=0;i<bookings.length ;i++ ) { 
+                var url="bookings/"+bookings[i]._id; %>
+            <div class="pname"><a href=<%=url%>><%=bookings[i].campground.name%> Booking</a></div>
+            <%}%>
+        </div>
+    </fieldset>
+</div>
+<% include ./partials/footer %> 

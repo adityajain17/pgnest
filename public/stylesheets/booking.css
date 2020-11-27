@@ -1,0 +1,119 @@
+body
+{
+    background-image: url(/assets/image-test-6.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.main-box{
+    margin: 50px auto;
+    background-color: white;
+    width:80%;
+    padding:20px;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    border-radius: 4px;
+}
+.customer-details{
+    border: 1px solid rgb(240, 240, 240);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+    /* height: 100%; */
+}
+.customer-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modify{
+    line-height: 1.71;
+    font-size: 14px;
+    font-weight: 600;
+    /* width:100px; */
+    background-color: #1ab64f;
+    color: white;
+    border: 1px solid rgb(240, 240, 240);
+    padding: 6px 12px;
+}
+.show-info{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sbox{
+    padding: 10px 20px;
+}
+.line{
+    width: 1px;
+    height: 20px;
+    border-right: 1px solid rgb(223, 223, 223);
+}
+.hotel-details{
+    margin-left: 15px;
+    flex:1;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(223, 223, 223);
+    display: flex;
+    flex-direction: column;
+}
+.complete-book{
+    border: 1px solid rgb(240, 240, 240);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(223, 223, 223);
+}
+.part-1{
+    display: flex;
+}
+.details{
+    flex:2;
+}
+.bitmap{
+    flex:1;
+    margin-top: 20px;
+}
+.part-2{
+    padding-left: 20px;
+}
+.part-3{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.billing{
+    display: flex;
+    flex-direction: column;
+}
+.b1{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 2;
+}
+.b2{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 2;
+}
+.b3{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 2;
+}
+.hr{
+    margin: 10px 0;
+    border-bottom:1px solid rgb(223, 223, 223);;
+}

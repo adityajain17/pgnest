@@ -1,0 +1,51 @@
+.navclass
+{
+    /* background-color: #343a40; */
+    background-color: #563d7c;
+}
+.navbar-default .navbar-brand 
+{
+    color:#ffff;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color:#ffff;
+} 
+.navbar-default .navbar-nav>li>a 
+{
+    color:rgba(255,255,255,.55);
+}
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+#delete-form
+{
+    display: inline;
+}
+.flash
+{
+    margin:auto;
+    width:500px;
+}
+.no-like
+{
+    font-size:25px;
+    color:grey;
+}
+.like
+{
+    font-size:25px;
+    color:#0084ff;
+}
+.like-butt
+{
+    background:none;
+    border: none;
+}

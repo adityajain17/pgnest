@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <div class="mainbox">
+        <form action="/campgrounds/<%=camp_id%>/book/cnf" method="GET">
+            <h1 style="text-align: center; padding-top: 20px; text-decoration: solid;">Book a Room</h1>
+            <br>
+            <div class="mb3 inps">
+                <label class="form-label" for="name">Customer Name</label>
+                <input class="form-control" type="text" name="name" value="<%=cname%> " required><br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="email">Email Id</label>
+                <input class="form-control" type="email" name="email" value="<%=email%> " required><br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="checkin">Check-In Date</label>
+                <input id="checkin" class="form-control" type="date" name="checkin" value="<%=checkin%>" required>
+                <br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="checkout">Check-Out Date</label>
+                <input id="checkout" class="form-control" type="date" name="checkout" value="<%=checkout%>" required>
+                <br>
+            </div>
+            <div class="mb3 inps">
+                <button type="submit" class="btn btn-success">Continue</button>
+            </div>
+        </form>
+    </div>
+    <script src="/js/book.js"></script>
+<% include ../partials/footer %>

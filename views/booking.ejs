@@ -1,0 +1,76 @@
+<% include ./partials/header %>
+<link rel="stylesheet" href="/stylesheets/booking.css">
+<script src="https://use.fontawesome.com/1a5e1fd8e9.js"></script>
+<div class="main-box">
+    <div class="details">
+        <div class="customer-details">
+            <div class="customer-head">
+                <div style="padding-left: 20px;"><h3><b>Your Details</b></h3></div>
+            </div>
+            <div class="show-info">
+                <div class="sbox"><%=book.cname%> </div>
+                <div class="line"></div>
+                <div class="sbox"><%=book.email%> </div>
+            </div>
+            <div>
+                <div style="padding-left: 18px;"><h3><b>Hotel Details</b></h3></div>
+                <div class="show-info">
+                    <div class="sbox"><%=campground.name%></div>
+                    <div class="line"></div>
+                    <div class="sbox"><%=campground.location%> </div>
+                </div>
+            </div>
+            <div class="customer-head" style="display: block;">
+                <div style="padding-left: 18px;"><h3><b>Billing Information</b></h3></div>
+                <div style="text-align: right;"><a href="/bookings/<%=book.bookid%>/invoice"><button class="modify">Download Invoice</button></a></button></div>
+                <br>
+            </div>
+        </div><br>
+    </div>
+    <div class="hotel-details">
+        <div class="part-1">
+            <div class="details" style="padding-left: 20px;">
+                <div><h3><b><%=campground.name%> </b></h3></div>
+                <div>
+                    <span style="background-color: #52b520;">
+                            <span style="padding: 10px;">
+                                <span style="color: white;text-align: center;font-size: 15px; font-weight: 700;"><%=campground.avg_rating%></span>
+                                <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
+                            </span>
+                    </span>&nbsp;
+                    <h5 style="display: inline;"><b><%=days%> Nights </b></h5>
+                </div>
+            </div>
+            <div class="bitmap"><img style="width: 100%; height:100%;object-fit: contain;" src="data:image/<%=campground.images[0].contentType%>;base64,<%=campground.images[0].data.toString('base64')%>" alt=""></div>
+        </div>
+        <br>
+        <div class="part-2">
+            <div><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
+                <span><b><%=book.checkin%> - </b></span>
+                <span><b><%=book.checkout%></b></span>
+            </div>
+        </div>
+        <br>
+        <div class="part-3">
+            <div class="billing">
+                <div class="b1">
+                    <div>Room price for 1 Night</div>
+                    <div style="font-weight: 600;">₹ <%=campground.price%> </div>
+                </div>
+                <div class="b2">
+                    <div>Number of Days</div>
+                    <div style="font-weight: 600;">X <%=days%> </div>
+                </div>
+                <div class="hr"></div>
+                <div class="b3">
+                    <div>
+                        <div>Payable Amount</div>
+                        <div style="font-size:12px;font-weight: 600; line-height: 1.67;opacity: 0.57;">inclusive of all taxes</div>
+                    </div>
+                    <div style="font-weight: 600;font-size:24px">₹ <%=bill_amt%> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer %>

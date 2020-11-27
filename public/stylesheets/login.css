@@ -1,0 +1,158 @@
+body
+{
+    /* background-color: rgba(108, 119, 112, 0.7); */
+    background-image: url(/assets/image-test-6.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.container
+{
+    display: flex;
+    margin: 80px auto;
+    width: 80vw;
+    height:60vh;
+}
+.animation
+{
+    flex:2;
+    min-width:400px;
+    background-position: center;
+    background-size: cover;
+    display:grid;
+    grid-template:1fr /1fr;
+}
+.slideshow
+{
+    position: absolute;
+    width: 57%;
+    height: 60%;
+    list-style: none;
+    margin:0;
+    padding:0;
+    z-index:-1;
+}
+.slideshow li
+{
+    width:100%;
+    height:100%;
+    background-size: cover;
+    position: absolute;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: imageAnimation 25s linear infinite;
+}
+.slideshow li:nth-child(1)
+{
+    background-image: url(https://i.pinimg.com/originals/d8/ea/5b/d8ea5b2da36d2bc95646e99530cb31cc.jpg);
+}
+.slideshow li:nth-child(2)
+{
+    background-image: url(https://www.commercialinteriordesign.com/sites/default/files/cid/article_embed_images/Doubletree-Hilton-High-res-19.jpg);
+    animation-delay: 5s;
+}
+.slideshow li:nth-child(3)
+{
+    background-image: url(https://cdn.wallpapersafari.com/87/37/HA8Zh5.jpg);
+    animation-delay: 10s;
+}
+.slideshow li:nth-child(4)
+{
+    background-image: url(https://images.unsplash.com/photo-1562184552-997c461abbe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+    animation-delay: 15s;
+}
+.slideshow li:nth-child(5)
+{
+    background-image: url(https://res.cloudinary.com/simplotel/image/upload/w_5000,h_3212/x_0,y_755,w_5000,h_1948,r_0,c_crop,q_60,fl_progressive/w_1500,c_fit,f_auto/genx-bhavnagar/Lobby3_iqum9x);
+    animation-delay: 20s;
+}
+@keyframes imageAnimation
+{
+    0% 
+    {
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+    10%
+    {
+        opacity:1;
+        animation-timing-function: ease-out;
+    }
+    20%
+    {
+        opacity: 1;
+    }
+    30%
+    {
+        opacity:0;
+    }
+}
+.details
+{
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:400px;
+    background-color: #ffff;
+}
+.pname
+{
+    font-family: 'Seaweed Script', cursive;
+    font-size: 45px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 60px;
+    flex:2;
+    color:black;
+}
+.credentials
+{
+    flex:6;
+}
+.welcome
+{
+    color:black;  
+    text-align: center; 
+    font-weight: 700;
+    font-size: 26px;
+    font-family: 'Raleway', sans-serif;
+}
+.lab
+{
+    color:black;  
+    text-align: center; 
+    font-weight: 400;
+}
+.inps
+{
+    border: none;
+    color: black;;
+    font-weight: 500;
+    border-bottom: 1px solid grey;
+}
+.fpwd
+{
+    color:black;
+}
+.btn
+{
+    background-color:#d3164d;
+    color: white;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-left: 50px;
+    align-items: center;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+a:hover{
+    color:#d3164d;
+}
+.noacc
+{
+    flex:2;
+}

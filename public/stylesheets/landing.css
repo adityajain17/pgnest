@@ -1,0 +1,116 @@
+.outer-box{
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+.logo-box{
+  flex: 1;
+  background-color: beige;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.outer-logo-box{
+    display: flex;
+    flex-direction: column;
+}
+.inner-box{
+  display: flex;
+  flex-direction: column;
+  flex:2;
+}
+.cbox{
+    flex: 1;
+}
+.main-box{
+  display: flex;
+  align-items: center;
+}
+.animation-box{
+  flex: 1;
+  /* background-color: red; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.temp{
+  width: 100%;
+  height: 100%;
+}
+
+
+.animation
+{
+    flex:2;
+    min-width:400px;
+    background-position: center;
+    background-size: cover;
+    display:grid;
+    grid-template:1fr /1fr;
+}
+.slideshow
+{
+    position: fixed;
+    width: 57%;
+    height: 60%;
+    list-style: none;
+    margin:0;
+    padding:0;
+    z-index:-1;
+}
+.slideshow li
+{
+    width:100%;
+    height:100%;
+    background-size: cover;
+    position: absolute;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: imageAnimation 25s linear infinite;
+}
+.slideshow li:nth-child(1)
+{
+    background-image: url(https://i.pinimg.com/originals/d8/ea/5b/d8ea5b2da36d2bc95646e99530cb31cc.jpg);
+}
+.slideshow li:nth-child(2)
+{
+    background-image: url(https://media.istockphoto.com/photos/3d-rendering-modern-luxury-bedroom-suite-and-bathroom-picture-id928431714?k=6&m=928431714&s=612x612&w=0&h=IBnf0aE9zEmsaJ3nLep6UmK4u-KYQPdEQa6LY30Ivn4=);
+    animation-delay: 5s;
+}
+.slideshow li:nth-child(3)
+{
+    background-image: url(https://cdn.wallpapersafari.com/87/37/HA8Zh5.jpg);
+    animation-delay: 5s;
+}
+.slideshow li:nth-child(4)
+{
+    background-image: url(https://images.unsplash.com/photo-1562184552-997c461abbe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+    animation-delay: 5s;
+}
+.slideshow li:nth-child(5)
+{
+    background-image: url(https://res.cloudinary.com/simplotel/image/upload/w_5000,h_3212/x_0,y_755,w_5000,h_1948,r_0,c_crop,q_60,fl_progressive/w_1500,c_fit,f_auto/genx-bhavnagar/Lobby3_iqum9x);
+    animation-delay: 5s;
+}
+@keyframes imageAnimation
+{
+    0% 
+    {
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+    10%
+    {
+        opacity:1;
+        animation-timing-function: ease-out;
+    }
+    20%
+    {
+        opacity: 1;
+    }
+    30%
+    {
+        opacity:0;
+    }
+}

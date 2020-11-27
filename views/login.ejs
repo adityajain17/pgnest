@@ -1,0 +1,35 @@
+<% include ./partials/header %> 
+<link rel="stylesheet" href="stylesheets/login.css">
+<link href="https://fonts.googleapis.com/css?family=Seaweed+Script&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+<div class="container">
+    <div class="animation">
+        <ul class="slideshow">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="details">
+        <!-- <div class="pname">PG Nest</div> -->
+        <div class="credentials">
+            <!-- <h4 class="welcome">Welcome to PG Nest</h4> -->
+            <img style="padding-left:40px;padding-top:5px;width:auto;max-height:100px;object-fit: cover;"src="assets/pg-nest.png" alt="Dintn">
+            <form action="/login" method="POST"><br>
+                <label class="lab" for="username">Username</label>
+                <br>
+                <input class="inps"type="text" name="username" placeholder=""><br><br>
+                <label class="lab" for="username">Password</label>
+                <br>
+                <input class="inps" type="password" name="password" placeholder=""><br><br>
+                <div ><a class="fpwd" href="">Forgot Password?</a></div>
+                <button class="btn">Sign In</button>
+            </form>
+        </div>
+        <br>
+        <div class="lab noacc">Not an Inotel Member?<a class="fpwd" href="/register">Become One</a></div>
+    </div>
+</div>
+<% include ./partials/footer %> 

@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+    <link rel="stylesheet" href="/stylesheets/gallery.css">
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <div class="mainbox">
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <h1 style="text-align: center; padding-top: 20px; text-decoration: solid;">Edit Listing</h1>
+            <div class="mb3 inps">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" name="name" value="<%=campground.name%>" required><br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" name="location" value="<%=campground.location%>" required><br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="price">Price</label>
+                <input class="form-control" type="number" name="price" value="<%=campground.price%>" required>
+                <br>
+            </div>
+            <div class="mb3 inps">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" name="description" rows="5" required><%=campground.description%>
+                </textarea><br>
+            </div>
+            <div class="mb3 inps">
+                <p class="glyphicon glyphicon-upload"></p>&nbsp;
+                <label class="form-label" for="images">Upload More Images</label>
+                <input type="file" name="images" accept="image/*" multiple><br>
+            </div>
+            <div class="mb3 inps">
+                <h3><b>Delete Images</b></h3>
+                <div class="gallery">
+                    <ul>
+                        <% for( let index = 0; index < campground.images.length; index++ ) { %>
+                            <li><input type="checkbox" id="cb<%=index%>"  name="check[]" value=<%=index%> />
+                                <label for="cb<%=index%>"><img src="data:image/<%=campground.images[index].contentType%>;base64,<%=campground.images[index].data.toString('base64')%>"/></label>
+                            </li>
+                        <% } %>
+                      </ul>
+                </div>
+            </div>
+            <div class="mb3 inps">
+                <button type="submit" class="btn btn-success">Submit Updated</button>
+            </div>
+        </form>
+    </div>
+<% include ../partials/footer %>
