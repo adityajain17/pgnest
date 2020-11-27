@@ -1,6 +1,8 @@
 # pgnest
 
-**#Capstone Project of VIT-AP B.Tech CSE Aditya Jain 17BCE7066**
+Author: Aditya Jain
+
+**Capstone Project of VIT-AP B.Tech CSE Aditya Jain 17BCE7066**
 
 **Steps to Execute**
 
