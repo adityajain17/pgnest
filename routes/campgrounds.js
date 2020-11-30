@@ -1,4 +1,5 @@
 var express = require("express");
+var mongoose = require('mongoose');
 var router  = express.Router();
 var Campground = require("../models/campground");
 var Booking    = require("../models/booking");
@@ -158,6 +159,18 @@ router.put("/:id",middleware.checkCampgroundOwnership,upload.array('images'),fun
         }
     });
 });
+
+//View Bookings
+router.get("/:id/bookings",function(req,res)
+{
+    // res.send("Hello");
+    var ObjectId=mongoose.Types.ObjectId;
+    Booking.find({campground:ObjectId(req.params.id)},{invoice:0},function(err,bookings)
+    {
+        res.render("campgrounds/bookings",{bookings:bookings,campid:req.params.id});
+    });
+});
+
 
 // DESTROY CAMPGROUND ROUTE
 router.delete("/:id",middleware.checkCampgroundOwnership, function(req, res){

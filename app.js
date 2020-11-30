@@ -47,9 +47,10 @@ app.use(function(req, res, next){
    res.locals.success = req.flash("success");
    next();
 });
-app.use("/", indexRoutes);
+
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/", indexRoutes);
 
 app.get("/bookings/:id",middleware.isLoggedIn,function(req,res)
 {

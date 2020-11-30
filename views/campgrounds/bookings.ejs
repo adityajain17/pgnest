@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+<link rel="stylesheet" href="/stylesheets/bookings.css">
+
+<div class="mainbox">
+    <%bookings.forEach(booking => { %>
+    <div class="book-box">
+        <div class="detail-box">
+            <label for="">Customer name: </label>
+            <span><%=booking.customer_name%> </span>
+        </div>
+        <div class="detail-box">
+            <label for="">Customer email: </label>
+            <span><%=booking.customer_email%> </span>
+        </div>
+        <div class="detail-box">
+            <label for="">Checkin Date: </label>
+            <span><%=booking.checkin%> </span>
+        </div>
+        <div class="detail-box">
+            <label for="">Checkout Date: </label>
+            <span><%=booking.checkout%> </span>
+        </div> 
+    </div>
+    <% }) %>
+</div><br>
+<div style="margin:10px"><a href="/campgrounds/<%=campid%>"><button class="btn btn-primary">Go Back</button></a></div>
+<% include ../partials/footer %>
