@@ -44,16 +44,19 @@ router.post("/register",upload.single('profile'),function(req, res){
     };
     if(fname.length==0||uname.length==0||pass.length==0||cnf.length==0||email.length==0)
     {
+        fs.unlinkSync(process.env['ROOT']+"/public/uploads/"+req.file.filename);
         req.flash("error","All the fields are mandatory");
         return res.redirect("/register");
     }
     else if(req.body.password!=req.body.cnfpass)
     {
+        fs.unlinkSync(process.env['ROOT']+"/public/uploads/"+req.file.filename);
         req.flash("error","Password and Confirm password should match");
         return res.redirect("/register");
     }
     else if(validate({email:email},constraints)!=undefined)
     {
+        fs.unlinkSync(process.env['ROOT']+"/public/uploads/"+req.file.filename);
         req.flash("error","Invalid Email");
         return res.redirect("/register");
     }
