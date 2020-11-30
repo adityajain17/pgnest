@@ -3,6 +3,7 @@ var router  = express.Router();
 var passport = require("passport");
 var fs=require('fs');
 var path=require('path');
+var validate = require("validate.js");
 var {spawn}     = require('child_process');
 var User = require("../models/user");
 var Campground=require("../models/campground");
@@ -36,15 +37,25 @@ router.post("/register",upload.single('profile'),function(req, res){
     var pass=req.body.password;
     var cnf=req.body.cnfpass;
     var email=req.body.email;
+    var constraints = {
+        email: {
+          email: true
+        }
+    };
     if(fname.length==0||uname.length==0||pass.length==0||cnf.length==0||email.length==0)
     {
         req.flash("error","All the fields are mandatory");
-        res.redirect("/register");
+        return res.redirect("/register");
     }
     else if(req.body.password!=req.body.cnfpass)
     {
         req.flash("error","Password and Confirm password should match");
-        res.redirect("/register");
+        return res.redirect("/register");
+    }
+    else if(validate({email:email},constraints)!=undefined)
+    {
+        req.flash("error","Invalid Email");
+        return res.redirect("/register");
     }
     var profile={data:fs.readFileSync(process.env['ROOT']+"/public/uploads/"+req.file.filename),
     contentType:req.file.mimetype};
