@@ -8,6 +8,7 @@ var User=require("../models/user");
 var multer      = require('multer');
 var {spawn}     = require('child_process');
 var invoice=require('../test_inv');
+var custom_mail=require('../sendMail');
 var fs =require('fs');
 var path=require('path');
 var storage = multer.diskStorage({
@@ -19,6 +20,10 @@ var storage = multer.diskStorage({
     }
   }),
   upload = multer({ storage: storage });
+
+// Object which will provide the details for the emails
+var mailOptions={from:'Aditya Jain'};
+
 //INDEX - show all campgrounds
 router.get("/", function(req, res){
     // Get all campgrounds from DB
@@ -55,12 +60,34 @@ router.post("/",middleware.isLoggedIn,upload.array('images'),function(req, res){
     var newCampground = {name: name,location:location,description:desc,price:price,author:author,
     images:img_array,avg_rating:avg_rating};
     // Create a new campground and save to DB
-    Campground.create(newCampground, function(err, newlyCreated){
+    Campground.create(newCampground, async function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
             //redirect back to campgrounds page
             // console.log(newlyCreated);
+            mailOptions.to=req.user.email;
+            mailOptions.subject="PG-Nest Listing Created";
+            mailOptions.html=`<img src="cid:pgnest" alt="Logo">
+        <div><b>Hello Aditya,</b></div>
+       <br>
+       <div>Congratulations on listing your property : 🎉🎉 :-)</div><br>
+       <div>Details provided are as below : </div><br>
+       <table style="border: 1px solid black; border-collapse: collapse;">
+           <tr style="border: 1px solid black;">
+               <th style="border: 1px solid black; padding: 15px;">Hotel Name</th>
+               <th style="border: 1px solid black; padding: 15px;">Hotel Address</th>
+               <th style="border: 1px solid black; padding: 15px;">Hotel Price</th>
+           </tr>
+           <tr style="border: 1px solid black;">
+               <td style="border: 1px solid black;padding: 15px;">`+name+`</td>
+               <td style="border: 1px solid black;padding: 15px;">`+location+`</td>
+               <td style="border: 1px solid black;padding: 15px;">₹`+price+`</td>
+           </tr>
+       </table><br> 
+       <div><b>Thank You,</b></div>
+       <div>Team PG-Nest</div>`;
+            await custom_mail.sendMsg(mailOptions,false);
             res.redirect("/campgrounds");
         }
     });
