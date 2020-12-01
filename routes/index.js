@@ -7,6 +7,7 @@ var validate = require("validate.js");
 var {spawn}     = require('child_process');
 var User = require("../models/user");
 var Campground=require("../models/campground");
+var custom_mail=require('../sendMail');
 var multer      = require('multer');
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,6 +18,10 @@ var storage = multer.diskStorage({
     }
   }),
   upload = multer({ storage: storage });
+
+// Object which will provide the details for the emails
+var mailOptions={from:'Aditya Jain'};
+
 //root route
 router.get("/", function(req, res){
     res.render("landing");
@@ -64,12 +69,29 @@ router.post("/register",upload.single('profile'),function(req, res){
     contentType:req.file.mimetype};
     fs.unlinkSync(process.env['ROOT']+"/public/uploads/"+req.file.filename);
     var newUser = new User({username:uname,firstname:fname,lastname:lname,gender:gen,email:email,profile:profile});
-    User.register(newUser, req.body.password, function(err, user){
+    User.register(newUser, req.body.password, async function(err, user){
         if(err){
+            // console.log(err);
             req.flash("error",err.message);
-            return res.render("register");
+            return res.redirect("/register");
         }
-        passport.authenticate("local")(req, res, function(){
+        mailOptions.to=email;
+        mailOptions.subject="Welcome to PG-Nest";
+        mailOptions.html=`<img src="cid:pgnest" alt="Logo">
+        <div><b>Hello `+fname+`,</b></div>
+        <br>
+        <div>Thank you for signing up for PG-Nest, your one stop solution for all your loding needs. Ready to dive in ?</div>
+        <br>
+        <div>You can list your proprties or book rooms at the most affordable prices.</div>
+        <br>
+        <div><b>Get Started Now.</b></div>
+        <br>
+        <div><a href="http://localhost:3000">Visit PG-Nest</a></div>
+        <br><br>
+        <div><b>Thank You,</b></div>
+        <div>Team PG-Nest</div>`;
+        await custom_mail.sendMsg(mailOptions,false);
+        passport.authenticate("local")(req, res,function(){
             req.flash("success", "Welcome to PG Nest " + user.username);
             res.redirect("/campgrounds"); 
         });

@@ -161,7 +161,7 @@ router.put("/:id",middleware.checkCampgroundOwnership,upload.array('images'),fun
 });
 
 //View Bookings
-router.get("/:id/bookings",function(req,res)
+router.get("/:id/bookings",middleware.checkCampgroundOwnership,function(req,res)
 {
     // res.send("Hello");
     var ObjectId=mongoose.Types.ObjectId;

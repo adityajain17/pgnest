@@ -10,26 +10,26 @@
             <div class="cnt">to continue to PG Nest</div>
             <div class="credentials">
                 <form action="/register" method="POST" enctype="multipart/form-data"><br>
-                    <input class="inps" type="text" name="fname" placeholder="First name">
-                    <input class="inps" type="text" name="lname" placeholder="Last name">
+                    <input class="inps" type="text" name="fname" placeholder="First name" required>
+                    <input class="inps" type="text" name="lname" placeholder="Last name" required>
                     <br><br>
                     <!-- <label for="gender">Gender</label> -->
                     
-                    <select class="drop" name="gender" id="" placeholder="Gender">
+                    <select class="drop" name="gender" id="" placeholder="Gender" required>
                         <option value="male" selected>Male</option>
                         <option value="female">Female</option>
                     </select>
                     <br>
-                    <input class="inps" type="text" name="email" placeholder="Email id">
-                    <input class="inps1" type="text" name="username" placeholder="Username">
+                    <input class="inps" type="text" name="email" placeholder="Email id" required>
+                    <input class="inps1" type="text" name="username" placeholder="Username" required>
                     <label for="inps1">You can use letters,numbers &periods</label><br><br>
                     <div class="mb3 ">
                         <p class="glyphicon glyphicon-upload"></p>&nbsp;
                         <label class="form-label" for="images">Profile Picture</label>&nbsp;
                         <input style="display: inline;" type="file" name="profile" accept="image/*" required><br>
                     </div>
-                    <input class="inps" type="password" name="password" placeholder="Password">
-                    <input class="inps" type="password" name="cnfpass" placeholder="Confirm Password">
+                    <input class="inps" type="password" name="password" placeholder="Password" required>
+                    <input class="inps" type="password" name="cnfpass" placeholder="Confirm Password" required>
                     <div class="abtn">
                         <div class="f1"><a class="anc" href="/login">Sign In Instead</a></div>
                         <div class="f2"><button class="btn">Sign Up</button></div>
