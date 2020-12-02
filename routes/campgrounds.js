@@ -69,7 +69,7 @@ router.post("/",middleware.isLoggedIn,upload.array('images'),function(req, res){
             mailOptions.to=req.user.email;
             mailOptions.subject="PG-Nest Listing Created";
             mailOptions.html=`<img src="cid:pgnest" alt="Logo">
-        <div><b>Hello Aditya,</b></div>
+        <div><b>Hello `+req.user.firstname+`,</b></div>
        <br>
        <div>Congratulations on listing your property : 🎉🎉 :-)</div><br>
        <div>Details provided are as below : </div><br>
@@ -87,7 +87,7 @@ router.post("/",middleware.isLoggedIn,upload.array('images'),function(req, res){
        </table><br> 
        <div><b>Thank You,</b></div>
        <div>Team PG-Nest</div>`;
-            await custom_mail.sendMsg(mailOptions,false);
+            custom_mail.sendMsg(mailOptions,false);
             res.redirect("/campgrounds");
         }
     });
@@ -293,8 +293,63 @@ router.post("/:id/book/cnf",isLoggedIn,function(req,res){
                     await invoice.gen_invoice(test_data);
                     var inv={data:fs.readFileSync(__dirname+"/output.pdf"),contentType:'application/pdf'};
                     book_camp.invoice=inv;
+                    mailOptions.to=book_camp.customer_email;
+                    mailOptions.subject="PG-Nest Booking Confirmed";
+                    mailOptions.html=`<img src="cid:pgnest" alt="Logo">
+                        <div><b>Hello`+book_camp.customer_name+`,</b></div>
+                    <br>
+                    <div>Your Booking is Confirmed : 👍👍 :-)</div><br>
+                    <div>Booking Details : </div><br>
+                    <table style="border: 1px solid black; border-collapse: collapse;">
+                        <tr style="border: 1px solid black;">
+                            <th style="border: 1px solid black; padding: 15px;">Hotel Name</th>
+                            <th style="border: 1px solid black; padding: 15px;">Hotel Address</th>
+                            <th style="border: 1px solid black; padding: 15px;">Billing-Amountt</th>
+                            <th style="border: 1px solid black; padding: 15px;">Checkin Date</th>
+                            <th style="border: 1px solid black; padding: 15px;">Checkout Date</th>
+                        </tr>
+                        <tr style="border: 1px solid black;">
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.campground.name+`</td>
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.campground.location+`</td>
+                            <td style="border: 1px solid black;padding: 15px;">₹ `+book_camp.bill+`</td>
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.checkin+`</td>
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.checkout+`</td>
+                        </tr>
+                    </table><br> 
+                    <div>The invoice is attached </div><br>
+                    <div><b>Thank You,</b></div>
+                    <div>Team PG-Nest</div>`;
+                    custom_mail.sendMsg(mailOptions,true);
+                    var ck= await Campground.findById(campground);
+                    var auth=await User.findById(ck.author.id);
+                    mailOptions.to=ck.author.email;
+                    mailOptions.subject="PG-Nest Booking Received";
+                    mailOptions.html=`<img src="cid:pgnest" alt="Logo">
+                        <div><b>Hello `+auth.firstname+`,</b></div>
+                    <br>
+                    <div>Booking Received : 🎊🎉 <b>:-)</b></div><br>
+                    <div>Booking Details : </div><br>
+                    <table style="border: 1px solid black; border-collapse: collapse;">
+                        <tr style="border: 1px solid black;">
+                            <th style="border: 1px solid black; padding: 15px;">Customer Name</th>
+                            <th style="border: 1px solid black; padding: 15px;">Customer Email</th>
+                            <th style="border: 1px solid black; padding: 15px;">Checkin Date</th>
+                            <th style="border: 1px solid black; padding: 15px;">Checkout Date</th>
+                        </tr>
+                        <tr style="border: 1px solid black;">
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.customer_name+`</td>
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.customer_email+`</td>
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.checkin+`</td>
+                            <td style="border: 1px solid black;padding: 15px;">`+book_camp.checkout+`</td>
+                        </tr>
+                    </table><br> 
+                    <div>The invoice is attached </div><br>
+                    <div><b>Thank You,</b></div>
+                    <div>Team PG-Nest</div>`;
+                    custom_mail.sendMsg(mailOptions,true).then(()=>{
+                        fs.unlinkSync(__dirname+"/output.pdf");
+                    });
                     await book_camp.save();
-                    fs.unlinkSync(__dirname+"/output.pdf");
                     User.findById(req.user._id,async function(err,foundUser)
                     {
                         foundUser.bookings.push(book_camp._id);

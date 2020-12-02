@@ -90,7 +90,7 @@ router.post("/register",upload.single('profile'),function(req, res){
         <br><br>
         <div><b>Thank You,</b></div>
         <div>Team PG-Nest</div>`;
-        await custom_mail.sendMsg(mailOptions,false);
+        custom_mail.sendMsg(mailOptions,false);
         passport.authenticate("local")(req, res,function(){
             req.flash("success", "Welcome to PG Nest " + user.username);
             res.redirect("/campgrounds"); 
