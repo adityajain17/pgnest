@@ -2,8 +2,8 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'aditya.jain@vitap.ac.in',
-    pass: 'Adityajain7@'
+    user: '[enter_emailid_here]',
+    pass: '[enter_password_here]'
   }
 });
 function sendMsg(mailOptions,hasInvoice){
